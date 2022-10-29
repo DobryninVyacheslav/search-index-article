@@ -1,0 +1,41 @@
+\documentclass[
+    twocolumn,
+%    hf, %enable header and footer.
+]{template/ceurart}
+
+\sloppy
+\usepackage{listings}
+\lstset{breaklines=true}
+
+\begin{document}
+    \copyrightyear{2022}
+    \copyrightclause{Copyright for this paper by its authors.
+    Use permitted under Creative Commons License Attribution 4.0
+    International (CC BY 4.0).}
+    \conference{This command is for the conference information}
+    \title{Optimization of the structure of a full-text search index using neural networks of the "Transformer" architecture}
+    \author[1]{Vyacheslav YU. Dobrynin}
+    \author[1]{Roman K. Abramovich}
+    \author[1]{Artem D. Gorshkov}
+    \author[1]{Alexey V. Platonov}
+    \address[1]{ITMO University, Kronverksky Pr. 49, bldg. A, Saint-Petersburg, 197101, Russian Federation}
+    \begin{abstract}
+        The use of modern language models of the ``Transformer'' architecture in information retrieval significantly
+        improves its quality, but negatively affects the performance of the process.
+        The paper considers an approach to the formation of a reverse index of a search engine,
+        which makes it possible to avoid losses in search speed by precalculating the distances from dictionary
+        elements to documents at the indexing stage.
+    \end{abstract}
+    \begin{keywords}
+        Search engine \sep transformer \sep BERT \sep inverted index \sep optimization.
+    \end{keywords}
+    \maketitle
+
+
+    \section{Introduction}
+    CEUR-WS's article template provides a consistent \LaTeX{} style for
+    use across CEUR-WS publications, and incorporates accessibility and
+    metadata-extraction functionality.
+    This document will explain the
+    major features of the document class.
+\end{document}
