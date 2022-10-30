@@ -33,9 +33,25 @@
 
 
     \section{Introduction}
-    CEUR-WS's article template provides a consistent \LaTeX{} style for
-    use across CEUR-WS publications, and incorporates accessibility and
-    metadata-extraction functionality.
-    This document will explain the
-    major features of the document class.
+    Pre-trained neural networks allow you to effectively use complex models with less effort
+    to train them to solve various kinds of problems.
+    Information retrieval is no exception, in this area for a long time simple algorithms
+    were used that showed high performance, but relatively low quality of search.
+    The use of machine learning makes it possible to significantly improve the quality
+    characteristics of the search, but due to the need to perform a large number of operations,
+    i.e. high algorithmic complexity, this leads to performance losses.
+    In this regard, modern search engines use two stages of selection of relevant documents [1].
+    At the first stage, simple and effective algorithms are used that screen out most of the candidates,
+    and at the second stage, neural networks are used to more accurately determine
+    the relevance of the remaining documents.
+    Thus, the speed of simple algorithms and the quality of complex ones are combined.
+    But such an architecture has its drawbacks: the documents obtained at the first stage are selected
+    without understanding the semantics of the texts, and potentially relevant documents are skipped
+    due to a mismatch between the query dictionary and documents [2].
+    The paper presents an approach to building a reverse index of a search engine using a neural network
+    of the ``Transformer'' architecture, aimed at overcoming the above disadvantages.
+    The peculiarity of the approach is that the distances from the elements of the dictionary,
+    taking into account the context, to the documents are calculated at the indexing stage using the model,
+    and the search is performed by the index without it, as a result of which the search is performed quickly
+    and efficiently, taking into account the semantics of the texts.
 \end{document}
