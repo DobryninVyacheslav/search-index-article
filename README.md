@@ -1,4 +1,4 @@
-# LaTeX user template and guide
+# Optimization of the structure of a full-text search index using neural networks of the "Transformer" architecture
 
 To compile user guide:
 
