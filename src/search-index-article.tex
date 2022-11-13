@@ -22,7 +22,7 @@
     \begin{abstract}
         The use of modern language models of the ``Transformer'' architecture in information retrieval significantly
         improves its quality, but negatively affects the performance of the process.
-        The paper considers an approach to the formation of a reverse index of a search engine,
+        The paper considers an approach to the formation of an inverted search engine index,
         which makes it possible to avoid losses in search speed by precalculating the distances from dictionary
         elements to documents at the indexing stage.
     \end{abstract}
@@ -39,21 +39,24 @@
     were used that showed high performance, but relatively low quality of search.
     The use of machine learning makes it possible to significantly improve the quality
     characteristics of the search, but due to the need to perform a large number of operations,
-    i.e. high algorithmic complexity, this leads to performance losses.
-    In this regard, modern search engines use two stages of selection of relevant documents~\cite{multiStageRetrieval}.
+    i.e. high algorithmic complexity, this leads to performance losses~\cite{performanceLoss}.
+    In this regard, modern search engines use two stages of retrieving relevant documents~\cite{multiStageRetrieval}.
     At the first stage, simple and effective algorithms are used that screen out most of the candidates,
     and at the second stage, neural networks are used to more accurately determine
     the relevance of the remaining documents.
     Thus, the speed of simple algorithms and the quality of complex ones are combined.
-    But such an architecture has its drawbacks: the documents obtained at the first stage are selected
+    But such an architecture has drawbacks: the documents obtained at the first stage are retrieved
     without understanding the semantics of the texts, and potentially relevant documents are skipped
-    due to a mismatch between the query dictionary and documents~\cite{vocabularyMismatch}.
-    The paper presents an approach to building a reverse index of a search engine using a neural network
+    due to a vocabulary mismatch between the query and documents dictionaries~\cite{vocabularyMismatch1,vocabularyMismatch2}.
+    The paper presents an approach to building an inverted index of a search engine using a neural network
     of the ``Transformer'' architecture, aimed at overcoming the above disadvantages.
+    The paper also considers the solution to the problem of using polysemous words by considering their context.
     The peculiarity of the approach is that the distances from the elements of the dictionary,
-    taking into account the context, to the documents are calculated at the indexing stage using the model,
+    taking into account the context, to the documents are calculated at the indexing stage using the neural model,
     and the search is performed by the index without it, as a result of which the search is performed quickly
-    and efficiently, taking into account the semantics of the texts.
+    and efficiently based on the semantics of the text.
+
+
 
     \bibliography{search-index-article}
 \end{document}
