@@ -57,6 +57,23 @@
     and efficiently based on the semantics of the text.
 
 
+    \section{Related Work}
+
+    \paragraph{Vector Representation.}
+    The work presented by Zamani \textit{et al.} introduced SNRM~\cite{snrm},
+    an approach for mapping documents to sparse vector representations.
+    This allows the use of an inverted index, resulting in high search speed and comparatively low memory consumption.
+    However, in practice, it turned out that the effectiveness of SNRM is significantly
+    inferior to modern state-of-the-art approaches.
+    Unlike SNRM, we use dense vector BERT-based representations.
+    However, they also have their limitations.
+    So, for their search, nearest neighbor algorithms with linear complexity can be used,
+    which is unacceptable for large amounts of data used in information retrieval.
+    An acceptable solution is to use algorithms of the approximate nearest neighbor (ANN) class~\cite{ann},
+    which allow a small loss of accuracy with an increase in speed by several orders of magnitude.
+    Their disadvantage, depending on the specific implementation,
+    is either high memory consumption or suboptimal performance.
+    In this paper, we use HNSW~\cite{hnsw} algorithm based on proximity graphs.
 
     \bibliography{search-index-article}
 \end{document}
