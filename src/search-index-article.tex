@@ -33,7 +33,7 @@
 
 
     \section{Introduction}
-    Pre-trained neural networks allow you to effectively use complex models with less effort
+    Pre-trained neural networks make it possible to effectively use complex models with less effort
     to train them to solve various kinds of problems.
     Information retrieval is no exception, in this area for a long time simple algorithms
     were used that showed high performance, but relatively low quality of search.
@@ -85,7 +85,7 @@
     similarity between a query and a document online, but is used during the construction of an inverted index.
     Moreover, to speed up this process, we use DistilBERT, which is 40\% smaller, 60\% faster,
     and retains 97\% of the language understanding capabilities compared to the base BERT~\cite{bertDistilling}.
-    
+
     \paragraph{Contextual word sense disambiguation.}
     There are many polysemous words in document and query dictionaries.
     The different meanings of a word depend on the contexts in which the word is used and
@@ -96,6 +96,20 @@
     but the contextualized senses of these tokens.
     Thus, documents from the inverted index will be retrieved not by a specific token,
     but by its sense related to a specific context, which is meant in the query.
+
+
+    \section{Inverted index construction}
+    The proposed approach is based on using BERT to find similarities between a query and a document.
+    This model helps to represent a document or a query in a multidimensional semantic space,
+    using which one can find the distance or otherwise similarity between a document and a query,
+    taking into account the meaning of the texts.
+    However, the use of deep neural networks is accompanied by performance losses,
+    which can be critical in the direct interaction of the user with the search engine.
+    In view of this, a distinctive feature of the proposed approach is that it involves the use of a neural network
+    only during the construction of the index.
+    This is achieved due to the special structure of the reverse index,
+    which makes it possible to store all the information necessary for searching.
+    Also, the index is built in such a way that documents are searched for by contextualized meanings of words.
 
     \bibliography{search-index-article}
 \end{document}
