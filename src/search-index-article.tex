@@ -73,7 +73,18 @@
     which allow a small loss of accuracy with an increase in speed by several orders of magnitude.
     Their disadvantage, depending on the specific implementation,
     is either high memory consumption or suboptimal performance.
-    In this paper, we use HNSW~\cite{hnsw} algorithm based on proximity graphs.
+    In this paper, we use the HNSW~\cite{hnsw} algorithm based on proximity graphs.
+
+    \paragraph{BERT and Its Optimization.}
+    To convert a document into a semantic vector space, the BERT~\cite{devlin2018bert} model is used,
+    which shows the state-of-the-art results in many NLP tasks.
+    However, this model is computationally expensive.
+    Many researchers optimize it using distilling~\cite{bertDistilling},
+    compression~\cite{bertCompression}, and pruning~\cite{bertPruning}.
+    We decided to go by changing the architecture, so that BERT is not used to search for
+    similarity between a query and a document online, but is used during the construction of an inverted index.
+    Moreover, to speed up this process, we use DistilBERT, which is 40\% smaller, 60\% faster,
+    and retains 97\% of the language understanding capabilities compared to the base BERT~\cite{bertDistilling}.
 
     \bibliography{search-index-article}
 \end{document}
