@@ -85,6 +85,17 @@
     similarity between a query and a document online, but is used during the construction of an inverted index.
     Moreover, to speed up this process, we use DistilBERT, which is 40\% smaller, 60\% faster,
     and retains 97\% of the language understanding capabilities compared to the base BERT~\cite{bertDistilling}.
+    
+    \paragraph{Contextual word sense disambiguation.}
+    There are many polysemous words in document and query dictionaries.
+    The different meanings of a word depend on the contexts in which the word is used and
+    can be distinguished with their help.
+    There are methods that assign different vector representations
+    to polysemous words depending on their context~\cite{athiwaratkun2018probabilistic}.
+    This is also used in our algorithm, the keys of the inverted index will not be tokens,
+    but the contextualized senses of these tokens.
+    Thus, documents from the inverted index will be retrieved not by a specific token,
+    but by its sense related to a specific context, which is meant in the query.
 
     \bibliography{search-index-article}
 \end{document}
