@@ -6,6 +6,7 @@
 \sloppy
 \usepackage{listings}
 \usepackage{svg}
+\usepackage{underscore} % for normal display of underscore on svg images
 \lstset{breaklines=true}
 
 \begin{document}
@@ -121,15 +122,35 @@
     the sets will be as follows: [itmo, university], [itmo, university, locate],
     [university, locate, saint-petersburg], [locate, saint-petersburg].
     Next, the windows are passed to the BERT model to find their vector representations.
-    The resulting contextualized vectors are stored in the key-value database.
-    Vectors for the same token are appended, not replaced.
+    The resulting contextualized vectors are stored in the key-value database
+    along with the ID of the document to which the passed window belongs.
+    Pairs (document ID, vector) for the same token are appended, not replaced.
     This completes the preparatory phase.
-    Figure~\ref{fig:store_vectors} illustrates the described process.
+    Figure~\ref{fig:storeVectors} illustrates the described process.
     \begin{figure}
         \centering
-        \includesvg[width=\linewidth]{image/getting_contextualized_vectors}
+        \includesvg[width=\linewidth]{image/getting-contextualized-vectors}
         \caption{Preparation of vector representations}
-        \label{fig:store_vectors}
+        \label{fig:storeVectors}
+    \end{figure}
+    
+    \subsection{HNSW index building}
+    The contextualized vectors obtained at the previous stage for each token represent its meaning in some context.
+    However, it is highly likely that some vectors will represent the same meaning, and to be more precise,
+    the vectors will be divided into groups in the semantic space,
+    each of which will represent a specific context value of the token.
+    To divide into such groups (clusters), hierarchical clustering is used in the work.
+    The number of clusters equal to 16 was chosen empirically and will be refined during the experiments.
+    Next, for the resulting clusters, their centroids are calculated.
+    The centroid vector represents one of the contextualized token senses.
+    After that, the token, the cluster identifier (which is the cluster serial number for a particular token),
+    and the resulting centroid are stored in the HNSW index.
+    Figure~\ref{fig:hnswIndexBuilding} illustrates the described process.
+    \begin{figure}
+        \centering
+        \includesvg[width=\linewidth]{image/hnsw-index-building}
+        \caption{HNSW index building process}
+        \label{fig:hnswIndexBuilding}
     \end{figure}
 
     \bibliography{search-index-article}
