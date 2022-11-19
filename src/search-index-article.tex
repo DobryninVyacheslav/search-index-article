@@ -5,6 +5,7 @@
 
 \sloppy
 \usepackage{listings}
+\usepackage{svg}
 \lstset{breaklines=true}
 
 \begin{document}
@@ -110,6 +111,26 @@
     This is achieved due to the special structure of the reverse index,
     which makes it possible to store all the information necessary for searching.
     Also, the index is built in such a way that documents are searched for by contextualized meanings of words.
+    This process is carried out in several stages.
+
+    \subsection{Getting Contextualized Vector Representations}
+    The first stage is preparatory.
+    On it, for all tokens of each document obtained after preprocessing,
+    windows of a given size are extracted, which are tokens and their contexts.
+    So for a window length of 3 and the sentence ``ITMO University is located in Saint-Petersburg'',
+    the sets will be as follows: [itmo, university], [itmo, university, locate],
+    [university, locate, saint-petersburg], [locate, saint-petersburg].
+    Next, the windows are passed to the BERT model to find their vector representations.
+    The resulting contextualized vectors are stored in the key-value database.
+    Vectors for the same token are appended, not replaced.
+    This completes the preparatory phase.
+    Figure~\ref{fig:store_vectors} illustrates the described process.
+    \begin{figure}
+        \centering
+        \includesvg[width=\linewidth]{image/getting_contextualized_vectors}
+        \caption{Preparation of vector representations}
+        \label{fig:store_vectors}
+    \end{figure}
 
     \bibliography{search-index-article}
 \end{document}
