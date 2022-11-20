@@ -50,6 +50,7 @@
     But such an architecture has drawbacks: the documents obtained at the first stage are retrieved
     without understanding the semantics of the texts, and potentially relevant documents are skipped
     due to a vocabulary mismatch between the query and documents dictionaries~\cite{vocabularyMismatch1,vocabularyMismatch2}.
+
     The paper presents an approach to building an inverted index of a search engine using a neural network
     of the ``Transformer'' architecture, aimed at overcoming the above disadvantages.
     The paper also considers the solution to the problem of using polysemous words by considering their context.
@@ -67,6 +68,7 @@
     This allows the use of an inverted index, resulting in high search speed and comparatively low memory consumption.
     However, in practice, it turned out that the effectiveness of SNRM is significantly
     inferior to modern state-of-the-art approaches.
+
     Unlike SNRM, we use dense vector BERT-based representations.
     However, they also have their limitations.
     So, for their search, nearest neighbor algorithms with linear complexity can be used,
@@ -75,7 +77,7 @@
     which allow a small loss of accuracy with an increase in speed by several orders of magnitude.
     Their disadvantage, depending on the specific implementation,
     is either high memory consumption or suboptimal performance.
-    In this paper, we use the HNSW~\cite{hnsw} algorithm based on proximity graphs.
+    In this work, we use the HNSW~\cite{hnsw} algorithm based on proximity graphs.
 
     \paragraph{BERT and Its Optimization.}
     To convert a document into a semantic vector space, the BERT~\cite{devlin2018bert} model is used,
@@ -105,11 +107,12 @@
     This model helps to represent a document or a query in a multidimensional semantic space,
     using which one can find the distance or otherwise similarity between a document and a query,
     taking into account the meaning of the texts.
+
     However, the use of deep neural networks is accompanied by performance losses,
     which can be critical in the direct interaction of the user with the search engine.
     In view of this, a distinctive feature of the proposed approach is that it involves the use of a neural network
     only during the construction of the index.
-    This is achieved due to the special structure of the reverse index,
+    This is achieved due to the special structure of the inverted index,
     which makes it possible to store all the information necessary for searching.
     Also, the index is built in such a way that documents are searched for by contextualized meanings of words.
     This process is carried out in several stages.
