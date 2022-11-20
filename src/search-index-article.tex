@@ -27,6 +27,12 @@
         The paper considers an approach to the formation of an inverted search engine index,
         which makes it possible to avoid losses in search speed by precalculating the distances from dictionary
         elements to documents at the indexing stage.
+
+        However, standard approaches using an inverted index suffer from a vocabulary mismatch problem,
+        which negatively impacts search effectiveness.
+        The lack of consideration of the various meanings of words depending on the context also negatively impacts.
+        To solve these problems, the paper proposes to map words, given their context,
+        into contextualized vector representations for storage in an inverted index and search in it.
     \end{abstract}
     \begin{keywords}
         Search engine \sep transformer \sep BERT \sep inverted index \sep optimization \sep word sense disambiguation.
