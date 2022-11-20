@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="1.5236514"
-     inkscape:cx="99.432191"
-     inkscape:cy="225.11711"
+     inkscape:zoom="2.2483813"
+     inkscape:cx="135.87553"
+     inkscape:cy="152.10943"
      inkscape:window-width="1792"
      inkscape:window-height="1092"
      inkscape:window-x="0"
@@ -514,7 +514,7 @@
          x="34.42178"
          y="38.312225">Clustering</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
+       style="fill:none;stroke:#000000;stroke-width:0.178;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);stroke-dasharray:none"
        d="M 33.072916,47.360417 V 42.06875"
        id="path28185" />
     <rect
@@ -538,7 +538,7 @@
          x="34.42178"
          y="25.369629">Finding centroids</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
+       style="fill:none;stroke:#000000;stroke-width:0.178;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);stroke-dasharray:none"
        d="M 33.072916,34.13125 V 28.839584"
        id="path46040" />
     <rect
@@ -562,7 +562,7 @@
          x="9.8702831"
          y="7.2612948">HNSW</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
+       style="fill:none;stroke:#000000;stroke-width:0.178;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend);stroke-dasharray:none"
        d="m 33.072916,20.902084 v -5.55625"
        id="path48811" />
     <text
