@@ -187,7 +187,8 @@
         \caption{Inverted index building process}
         \label{fig:invertedIndexBuilding}
     \end{figure}
-    
+
+
     \section{Search Process}
     The search process starts in the same way as the indexing process.
     For each token of the input query obtained after preprocessing, windows of the fixed size are extracted.
@@ -205,6 +206,14 @@
 
     Next steps are no differ from the classical search algorithms.
     We sort the list of candidate-documents by their resulting score and return top-N documents as the searching result.
+
+    Figure~\ref{fig:searchProcess} illustrates the described process.
+    \begin{figure}
+        \centering
+        \includesvg[width=\linewidth]{image/search-process}
+        \caption{Search process for a given Query}
+        \label{fig:searchProcess}
+    \end{figure}
 
     \bibliography{search-index-article}
 \end{document}
