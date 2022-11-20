@@ -90,7 +90,7 @@
     Moreover, to speed up this process, we use DistilBERT, which is 40\% smaller, 60\% faster,
     and retains 97\% of the language understanding capabilities compared to the base BERT~\cite{bertDistilling}.
 
-    \paragraph{Contextual word sense disambiguation.}
+    \paragraph{Contextual Word Sense Disambiguation.}
     There are many polysemous words in document and query dictionaries.
     The different meanings of a word depend on the contexts in which the word is used and
     can be distinguished with their help.
@@ -102,7 +102,7 @@
     but by its sense related to a specific context, which is meant in the query.
 
 
-    \section{Inverted index construction}
+    \section{Inverted Index Construction}
     The proposed approach is based on using BERT to find similarities between a query and a document.
     This model helps to represent a document or a query in a multidimensional semantic space,
     using which one can find the distance or otherwise similarity between a document and a query,
@@ -138,8 +138,8 @@
     \end{figure}
 
     This stage is auxiliary and its results are necessary for the subsequent stages.
-    
-    \subsection{HNSW index building}
+
+    \subsection{HNSW Index Building}
     The contextualized vectors obtained at the previous stage for each token represent its meaning in some context.
     However, it is highly likely that some vectors will represent the same meaning, and to be more precise,
     the vectors will be divided into groups in the semantic space,
@@ -160,7 +160,7 @@
 
     The resulting HNSW index is needed both for building an inverted index and during an online search.
 
-    \subsection{Inverted index building}
+    \subsection{Inverted Index Building}
     This stage is the final one, on which the formation of the inverted index is performed.
 
     The vector representations of the contextual senses of the token obtained at the first stage
