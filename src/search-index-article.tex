@@ -156,5 +156,23 @@
         \label{fig:hnswIndexBuilding}
     \end{figure}
 
+    \section{Search Process}
+    The search process starts in the same way as the indexing process.
+    For each token of the input query obtained after preprocessing, windows of the fixed size are extracted.
+    Then, each window is processed with the following algorithm:
+    \begin{enumerate}
+        \item Obtain vector representation by passing window to the BERT model;
+        \item Get nearest neighbours from the HNSW index using obtained vector.
+        \item For each pair (token, cluster ID) returned from HNSW, extract list of candidate-documents from inverted index
+        \item If a document is already present in a candidate list, merge it with the new candidate by summing their scores
+    \end{enumerate}
+
+    At the second step of this algorithm, HNSW search can return tokens different,
+    but semantically close to the original token from the query.
+    Thus, the vocabulary mismatch problem is being solved both during indexing and search time.
+
+    Next steps are no differ from the classical search algorithms.
+    We sort the list of candidate-documents by their resulting score and return top-N documents as the searching result.
+
     \bibliography{search-index-article}
 \end{document}
