@@ -136,6 +136,8 @@
         \caption{Preparation of vector representations}
         \label{fig:storeVectors}
     \end{figure}
+
+    This stage is auxiliary and its results are necessary for the subsequent stages.
     
     \subsection{HNSW index building}
     The contextualized vectors obtained at the previous stage for each token represent its meaning in some context.
@@ -154,6 +156,36 @@
         \includesvg[width=\linewidth]{image/hnsw-index-building}
         \caption{HNSW index building process}
         \label{fig:hnswIndexBuilding}
+    \end{figure}
+
+    The resulting HNSW index is needed both for building an inverted index and during an online search.
+
+    \subsection{Inverted index building}
+    This stage is the final one, on which the formation of the inverted index is performed.
+
+    The vector representations of the contextual senses of the token obtained at the first stage
+    are passed to the HNSW index built in the second stage to search for their nearest neighbors.
+    The number of neighbors equal to 5 was chosen empirically and will be refined during the experiments.
+    During the evaluation, a compromise will be chosen between the quality of the search and
+    the speed of indexing and searching.
+    The extracted neighbors are semantically close to the original contextual sense of the token,
+    which means that they can also represent the sense of the document to which the token belongs.
+    Although neighbors may contain different tokens, it is important that their semantic meaning be the same,
+    as represented through embeddings.
+    Thus, the vocabulary mismatch problem is solved.
+
+    In the next step, distances are calculated between the vector representations of documents and
+    the centroid vectors of the neighbors of the considered contextualized vectors.
+    Distances are found using the dot product.
+    The resulting scores, along with the document IDs, are written as values into an inverted index against the keys,
+    which are (token, cluster ID) pairs.
+    The process is repeated until the scores for all prepared contextualized vectors are indexed.
+    Figure~\ref{fig:invertedIndexBuilding} illustrates the described process.
+    \begin{figure}
+        \centering
+        \includesvg[width=\linewidth]{image/inverted-index-building}
+        \caption{Inverted index building process}
+        \label{fig:invertedIndexBuilding}
     \end{figure}
 
     \bibliography{search-index-article}
