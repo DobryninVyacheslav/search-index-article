@@ -222,5 +222,23 @@
         \label{fig:searchProcess}
     \end{figure}
 
+
+    \section{Methodology}
+
+    \paragraph{Dataset.}
+    Many information retrieval works use the MS MARCO~\cite{msMarco} dataset from Microsoft,
+    which was released in 2016 and adapted for retrieval in 2018.
+    The dataset contains 8.8 million web page passages and 3.2 million documents that were collected
+    from Bing search engine logs.
+    Each query is associated with a document or multiple documents by relevancy judgments.
+    The development set contains 6980 requests.
+
+    Thus, the dataset makes it possible to solve both the passage retrieval tasks and the document retrieval tasks.
+    Thanks to this, the system is evaluated on real data, which means that the evaluation
+    results will more objectively show how the search engine will work in production environment.
+
+    It is also important to note that this dataset is often used by researchers in information retrieval,
+    which makes it easy to compare the evaluation of the proposed solutions.
+
     \bibliography{search-index-article}
 \end{document}
