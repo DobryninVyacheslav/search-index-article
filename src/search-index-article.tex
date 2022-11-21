@@ -204,7 +204,7 @@
         \item Obtain vector representation by passing window to the BERT model;
         \item Get nearest neighbours from the HNSW index using obtained vector;
         \item For each pair (token, cluster ID) returned from HNSW, extract list of candidate-documents from inverted index;
-        \item If a document is already present in a candidate list, merge it with the new candidate by summing their scores;
+        \item If a document is already present in a candidate list, merge it with the new candidate by summing their scores.
     \end{enumerate}
 
     At the second step of this algorithm, HNSW search can return tokens different,
@@ -239,6 +239,28 @@
 
     It is also important to note that this dataset is often used by researchers in information retrieval,
     which makes it easy to compare the evaluation of the proposed solutions.
+
+    \paragraph{Metrics.}
+    Various metrics will be used to evaluate our approach.
+    Search effectiveness will be evaluated using MRR@10/100/1000, since this is one of the main ways to evaluate
+    models that use the MS MARCO dataset, moreover, there are already prepared scripts to help us do this.
+    Metrics such as Recall@1000 and DCG@10/100/1000 will also be used.
+
+    The following parameters will be used as additional evaluation parameters:
+    \begin{enumerate}
+        \item Indexing throughput;
+        \item Delay when searching in the index (latency);
+        \item Required space to store the index structure (disk, memory).
+    \end{enumerate}
+
+    Also, as additional measurements, it will be important to look at:
+    \begin{enumerate}
+        \item Dependence of quality and performance metrics on vector representation dimensions;
+        \item Dependence of quality and performance metrics on the number of clusters of contextualized
+        vectors selected for clustering;
+        \item Dependence of quality and performance metrics on the number of nearest neighbors used
+        when searching in the HNSW index.
+    \end{enumerate}
 
     \bibliography{search-index-article}
 \end{document}
