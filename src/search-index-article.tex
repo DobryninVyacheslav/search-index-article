@@ -86,7 +86,7 @@
     is either high memory consumption or suboptimal performance.
     In this work, we use the HNSW~\cite{hnsw} algorithm based on proximity graphs.
 
-    \paragraph{BERT and Its Optimization.}
+    \paragraph{BERT}
     To convert a document into a semantic vector space, the BERT~\cite{devlin2018bert} model is used,
     which shows the state-of-the-art results in many NLP tasks.
     However, this model is computationally expensive.
@@ -96,6 +96,21 @@
     similarity between a query and a document online, but is used during the construction of an inverted index.
     Moreover, to speed up this process, we use DistilBERT, which is 40\% smaller, 60\% faster,
     and retains 97\% of the language understanding capabilities compared to the base BERT~\cite{bertDistilling}.
+
+    Models SparTerm~\cite{sparterm} and it's successor Splade ~\cite{splade} also use BERT to build an inverted
+    index with regard to token's contexts and vocabulary mismatch problem.
+
+    They use BERT to create a sparse term importance distribution for the whole dictionary for each passage at the indexing time.
+    They do so by extracting contextualized vectors for each token in the passage and computing its importance with every other
+    token in the dictionary.
+    
+    Despite the fact that their approach solves the same problems as ours, it requires much more computational resources during indexing  
+    as BERT is used not only to extract contextualized vectors, but also to compare these vectors with the
+    entire vocabulary.
+
+
+    \paragraph{BERT's optimization}
+
 
     \paragraph{Contextual Word Sense Disambiguation.}
     There are many polysemous words in document and query dictionaries.
