@@ -262,5 +262,20 @@
         when searching in the HNSW index.
     \end{enumerate}
 
+    \section{Conclusion and further work}
+
+    In this paper we presented a possible solution to both vocabulary and token's context accounting problems in
+    the information retrieval tasks.
+
+    By using modern language models of the ``Transformer'' architecture we were able to extract contextualized vector
+    representations from both documents and queries, cluster them into the finite amount of contextual meaning
+    embeddings for each independent token
+    and use them in order to build an inverted index and perform search queries.
+
+    Further area of research consists of running this algorithm on a selected dataset (MS MARCO),
+    evaluating different metrics search accuracy metrics, such as MRR, and comparing obtained results with the
+    existing algorithms.
+
+
     \bibliography{search-index-article}
 \end{document}
