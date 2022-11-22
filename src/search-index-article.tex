@@ -101,6 +101,16 @@
     as BERT is used not only to extract contextualized vectors, but also to compare these vectors with the
     entire vocabulary.
 
+    Authors of ~\cite{colbert} introduce a new concept called ``late interaction'' with their ColBERT model.
+    It is based on deep contextualized embeddings of document and query tokens, but with the late interaction
+    method they were able to pre-compute document's embeddings offline in order to provide an effective end-to-end retrieval model.
+
+    Although our approach shares the same goal to pre-compute all the necessary document embeddings offline, we aim to
+    build an inverted index as the output of our algorithm, while ColBERT relies on using dense vector-similarity search libraries,
+    such as faiss ~\cite{faiss}, to find relative documents at a query processing time.
+    That also means that using our approach all the term-document scores will be computed offline,
+    while ColBERT still needs to compute scores between document and query online.
+
     \paragraph{BERT's optimization.}
     BERT model is computationally expensive.
     Many researchers optimize it using distilling~\cite{bertDistilling},
