@@ -239,7 +239,7 @@
     \end{figure}
 
 
-    \section{Methodology}
+    \section{Methodology}\label{sec:methodology}
 
     \paragraph{Dataset.}
     Many information retrieval works use the MS MARCO~\cite{msMarco} dataset from Microsoft,
@@ -316,7 +316,26 @@
     Further hardware requirements will be refined in the course of experiments.
 
 
-    \section{Conclusion and further work}
+    \section{Further Work}
+    Further work will be carried out the analysis of the proposed approach, its refinement and final implementation.
+    After that, the algorithm will be evaluated according to the metrics described in \S\ref{sec:methodology}.
+    When we get the values of the metrics and based on their values, it will be possible to modify
+    separate parts of the architecture and evaluate the impact of changes by re-evaluating the metrics.
+
+    As possible modifications, various clustering algorithms can be considered.
+
+    Since not all words in the dictionary will be ambiguous, we may run into the problem that for unambiguous words,
+    several contextualized vectors will be allocated that convey the same meaning.
+    Therefore, when constructing clusters, it is necessary to exclude clusters that are repeated in meaning.
+
+    So, for example, for the X-means clustering algorithm, it is possible to set the minimum and maximum
+    number of clusters, after which it optimizes the number of clusters according to a given metric.
+
+    There is also an algorithm proposed in~\cite{logachevaEtal2020Word}, which is designed
+    to find contextual senses of words that differ in meaning.
+
+
+    \section{Conclusion}
 
     In this paper we presented a possible solution to both vocabulary and token's context accounting problems in
     the information retrieval tasks.
