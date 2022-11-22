@@ -102,12 +102,12 @@
     entire vocabulary.
 
     Authors of ~\cite{colbert} introduce a new concept called ``late interaction'' with their ColBERT model.
-    It is also based on deep contextualized embeddings of document and query tokens, but using the late interaction
-    method they are able to to pre-compute document's embeddings offline in order to provide an effective end-to-end retrieval model.
+    It is based on deep contextualized embeddings of document and query tokens, but with the late interaction
+    method they were able to pre-compute document's embeddings offline in order to provide an effective end-to-end retrieval model.
 
     Although our approach shares the same goal to pre-compute all the necessary document embeddings offline, we aim to
     build an inverted index as the output of our algorithm, while ColBERT relies on using vector-similarity search libraries,
-    such as faiss ~\cite{faiss}
+    such as faiss ~\cite{faiss}, at a query processing time.
 
 
     \paragraph{BERT's optimization.}
