@@ -86,31 +86,32 @@
     is either high memory consumption or suboptimal performance.
     In this work, we use the HNSW~\cite{hnsw} algorithm based on proximity graphs.
 
-    \paragraph{BERT}
+    \paragraph{BERT.}
     To convert a document into a semantic vector space, the BERT~\cite{devlin2018bert} model is used,
     which shows the state-of-the-art results in many NLP tasks.
-    However, this model is computationally expensive.
-    Many researchers optimize it using distilling~\cite{bertDistilling},
-    compression~\cite{bertCompression}, and pruning~\cite{bertPruning}.
-    We decided to go by changing the architecture, so that BERT is not used to search for
-    similarity between a query and a document online, but is used during the construction of an inverted index.
-    Moreover, to speed up this process, we use DistilBERT, which is 40\% smaller, 60\% faster,
-    and retains 97\% of the language understanding capabilities compared to the base BERT~\cite{bertDistilling}.
 
-    Models SparTerm~\cite{sparterm} and it's successor Splade ~\cite{splade} also use BERT to build an inverted
+    Models SparTerm~\cite{sparTerm} and it's successor SPLADE ~\cite{splade} also use BERT to build an inverted
     index with regard to token's contexts and vocabulary mismatch problem.
 
     They use BERT to create a sparse term importance distribution for the whole dictionary for each passage at the indexing time.
     They do so by extracting contextualized vectors for each token in the passage and computing its importance with every other
     token in the dictionary.
-    
-    Despite the fact that their approach solves the same problems as ours, it requires much more computational resources during indexing  
+
+    Despite the fact that their approach solves the same problems as ours, it requires much more computational resources during indexing
     as BERT is used not only to extract contextualized vectors, but also to compare these vectors with the
     entire vocabulary.
 
-
-    \paragraph{BERT's optimization}
-
+    \paragraph{BERT's optimization.}
+    BERT model is computationally expensive.
+    Many researchers optimize it using distilling~\cite{bertDistilling},
+    compression~\cite{bertCompression}, and pruning~\cite{bertPruning}.
+    We decided to go by changing the architecture, so that BERT is not used to search for
+    similarity score between a query and a document online,
+    but is used to calculate it when building the inverted index.
+    Using BERT online is only needed to find contextualized query token vectors,
+    which will not significantly impact performance due to small query sizes.
+    Moreover, to speed up this process, we use DistilBERT, which is 40\% smaller, 60\% faster,
+    and retains 97\% of the language understanding capabilities compared to the base BERT~\cite{bertDistilling}.
 
     \paragraph{Contextual Word Sense Disambiguation.}
     There are many polysemous words in document and query dictionaries.
@@ -271,6 +272,8 @@
     Also, as additional measurements, it will be important to look at:
     \begin{enumerate}
         \item Dependence of quality and performance metrics on vector representation dimensions;
+        \item Dependence of quality and performance metrics on the version of BERT used;
+        \item Dependence of quality and performance metrics on the clustering algorithm;
         \item Dependence of quality and performance metrics on the number of clusters of contextualized
         vectors selected for clustering;
         \item Dependence of quality and performance metrics on the number of nearest neighbors used
@@ -288,7 +291,7 @@
     and use them in order to build an inverted index and perform search queries.
 
     Further area of research consists of running this algorithm on a selected dataset (MS MARCO),
-    evaluating different metrics search accuracy metrics, such as MRR, and comparing obtained results with the
+    evaluating different metrics search effectiveness metrics, such as MRR, and comparing obtained results with the
     existing algorithms.
 
 
