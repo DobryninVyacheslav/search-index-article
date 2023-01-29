@@ -8,10 +8,14 @@ To compile user guide:
 ```shell
   cd src
   rm -r ../out/
-  pdflatex --shell-escape search-index-article -output-directory=../out 
-  bibtex ../out/search-index-article 
-  pdflatex --shell-escape search-index-article -output-directory=../out 
-  pdflatex --shell-escape search-index-article -output-directory=../out
+  mkdir ../out/
+  pdflatex --shell-escape -output-directory=../out search-index-article
+  cp search-index-article.bib ../out
+  cd ../out 
+  bibtex search-index-article
+  cd ../src
+  pdflatex --shell-escape -output-directory=../out search-index-article 
+  pdflatex --shell-escape -output-directory=../out search-index-article
 ```
 
 The --shell-escape option allows the running program to invoke an external program, in this case, Inkscape.
