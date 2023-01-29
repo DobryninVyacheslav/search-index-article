@@ -10,9 +10,8 @@ To compile user guide:
   rm -r ../out/
   mkdir ../out/
   pdflatex --shell-escape -output-directory=../out search-index-article
-  cp search-index-article.bib ../out
   cd ../out 
-  bibtex search-index-article
+  BIBINPUTS="../src" bibtex search-index-article
   cd ../src
   pdflatex --shell-escape -output-directory=../out search-index-article 
   pdflatex --shell-escape -output-directory=../out search-index-article
