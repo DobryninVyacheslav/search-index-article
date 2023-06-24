@@ -52,7 +52,7 @@
     \section{Introduction}
     Pre-trained neural networks make it possible to effectively use complex models with less effort
     to train them to solve various kinds of problems.
-    Information retrieval is no exception, in this area for a long time simple algorithms
+    Information retrieval is no exception, in this area for a long-time simple algorithms
     were used that showed high performance, but relatively low quality of search.
     The use of machine learning makes it possible to significantly improve the quality
     characteristics of the search, but due to the need to perform a large number of operations,
@@ -78,7 +78,7 @@
     \section{Related Work}
 
     \paragraph{Vector Representation.}
-    The work presented by Zamani \textit{et al.} introduced SNRM~\cite{snrm},
+    The work presented by Zamani \textit{et al.} introduced Standalone Neural Ranking Model (SNRM)~\cite{snrm},
     an approach for mapping documents to sparse vector representations.
     This allows the use of an inverted index, resulting in high search speed and comparatively low memory consumption.
     However, in practice, it turned out that the effectiveness of SNRM is significantly
@@ -86,13 +86,13 @@
 
     Unlike SNRM, we use dense vector BERT-based representations.
     However, they also have their limitations.
-    So, for their search, nearest neighbor algorithms with linear complexity can be used,
+    So, for their search, nearest neighbors algorithms with linear complexity can be used,
     which is unacceptable for large amounts of data used in information retrieval.
     An acceptable solution is to use algorithms of the approximate nearest neighbor (ANN) class~\cite{ann},
     which allow a small loss of accuracy with an increase in speed by several orders of magnitude.
     Their disadvantage, depending on the specific implementation,
     is either high memory consumption or suboptimal performance.
-    In this work, we use the HNSW~\cite{hnsw} algorithm based on proximity graphs.
+    In this work, we use the Hierarchical Navigable Small Worlds (HNSW)~\cite{hnsw} algorithm based on proximity graphs.
 
     \paragraph{BERT.}
     To convert a document into a semantic vector space, the BERT~\cite{devlin2018bert} model is used,
