@@ -299,13 +299,9 @@
     \end{enumerate}
 
     \paragraph{Implementation.}
-    In fact, at the moment, our algorithm is in the process of implementation,
-    the results of which will be discussed in future papers.
-    However, at the moment we have some code base and understanding about the technologies that we will use.
-
     To test the algorithms, we implemented IR stand, which has one interface for working
     with different information retrieval algorithms, as well as for their evaluation.
-    The approach described in this paper will be added to it.
+    The algorithm described in this paper has also been added to it.
     We use the Anserini Toolkit\footnote{https://github.com/castorini/anserini} as the baseline.
 
     Kotlin is used to implement the stand.
@@ -315,23 +311,14 @@
     of DistilBERT\footnote{https://huggingface.co/sentence-transformers/msmarco-distilbert-dot-v5}
     from the popular transformers\footnote{https://github.com/huggingface/transformers} library is used.
     Deep Java Library\footnote{https://github.com/deepjavalibrary/djl} is chosen to access DistilBERT from Kotlin code.
-    The storage subsystem of the h2\footnote{http://www.h2database.com/html/mvstore.html} resident database
-    was chosen as the implementation of the inverted index stored on disk.
-    However, after that it was decided to switch to using the Apache Lucene\footnote{https://github.com/apache/lucene}
-    library, since this is a mature technology for working with inverted indexes,
-    which has shown its effectiveness, for example, in systems such
-    as Elasticsearch\footnote{https://github.com/elastic/elasticsearch}.
+    Apache Lucene was chosen as the implementation of the inverted index,
+    as it is a mature technology that has shown its effectiveness,
+    for example, in systems such as Elasticsearch.
     As an interface to the stand, at the moment, the Command Line Interface (CLI) is implemented.
 
     \paragraph{Hardware.}
-    In the course of working with the developed stand, it was found that the indexing process using BERT
-    on the CPU takes unacceptable time.
-    However, the transition to the GPU and the CUDA toolkit\footnote{https://developer.nvidia.com/cuda-toolkit}
-    made it possible to speed up this process many times over.
-    Based on this, at the moment, the main requirement for hardware is the presence
-    of a powerful GPU supported by the CUDA toolkit.
-
-    Further hardware requirements will be refined in the course of experiments.
+    To build the index and perform searches,
+    we used a computer with 32 GB of RAM and an RTX A4000 Mobile GPU which has 8 GB of memory.
 
 
     \section{Further Work}
